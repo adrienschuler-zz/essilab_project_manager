@@ -1,0 +1,23 @@
+.mainWrapper {
+	
+}
+.breadcrumb {
+	background-color: #ECECEC;
+	border-top:1px solid #888888;
+	height:15px;
+	padding-left:20px;
+}
+.breadcrumb a {
+	font-size: 10.5pt;
+	color:gray;
+}
+
+.header {
+	background: white url('../img/layout/header.jpg') no-repeat;
+}
+
+.contextMenu {
+}
+
+.contextView {
+}

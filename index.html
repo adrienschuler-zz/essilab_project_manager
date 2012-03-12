@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <title>DEMO</title>
+
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/prototype-1.7.js"></script>
+
+  <!-- SmarClient Core -->
+  <script>
+    var isomorphicDir = 'core/isomorphic/';
+    window.isc_useSimpleNames = false;
+  </script>
+  <script src="core/isomorphic/system/modules/ISC_Core.js"></script>
+  <script src="core/isomorphic/system/modules/ISC_Foundation.js"></script>
+  <script src="core/isomorphic/system/modules/ISC_Containers.js"></script>
+  <script src="core/isomorphic/system/modules/ISC_Grids.js"></script>
+  <script src="core/isomorphic/system/modules/ISC_Forms.js"></script>
+  <script src="core/isomorphic/system/modules/ISC_DataBinding.js"></script>
+  <script src="core/isomorphic/system/modules/ISC_History.js"></script>
+  <!-- SmarClient Skin -->
+  <script src="core/isomorphic/skins/EnterpriseBlue/load_skin.js"></script>
+
+  <!-- Essilab -->
+  <script src="core/essilab/essilab_smartclient_core.js"></script>
+
+</head>
+<body>
+
+<noscript>
+  For full functionality of this site it is necessary to enable JavaScript.
+  Here are the <a href="http://www.enable-javascript.com/" target="_blank">
+  instructions how to enable JavaScript in your web browser</a>.
+</noscript>
+
+<script>
+  window.project = new essilab.project.Application({
+    context: "/essilab/"
+  });
+  window.project.start();
+</script>
+
+</body>
+</html>
