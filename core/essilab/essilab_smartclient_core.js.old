@@ -1,0 +1,81 @@
+var essilab = window.isc || {};
+
+essilab.sc = essilab.sc || {};
+essilab.sc.actions = essilab.sc.actions || {};
+
+essilab.project = essilab.project || {};
+essilab.project.view = essilab.project.view || {};
+
+essilab.bpm = {};
+
+essilab.bpm.Action = Class.create({
+    /** label, url */
+    initialize: function () {},
+    process : function(data) {},
+    forward : function(action){
+    	window.project.execute(action);
+    }
+});
+
+essilab.bpm.Decision = Class.create({
+    /** label, url */
+    initialize: function (options) {
+    	this.transitions = {};
+    	this.evaluate = options["evaluate"];
+    	this.datas = options["datas"];
+    },
+    process : function(){
+    	this.transitions[this.evaluate].process(this.datas);
+    },
+    setTransition : function(result, transition){
+    	this.transitions[result] = transition;
+    }
+});
+
+essilab.bpm.View = Class.create({
+    initialize: function() {
+   	  window.project.registerView(this);
+   	  this.container = null;
+   	  this.buildView();
+  	},
+	getContainer: function(){
+		return this.container;
+	},
+	getName: function(){
+		return this.options["name"];
+	}
+});
+
+essilab.project.Application =  Class.create({
+    layout: {},
+    views: {},
+    
+    options: {
+        context: "/",
+        start_url: "user/login",
+        layout_url: "views/layout.js"
+    },
+    
+    initialize: function(options) {
+        this.options.context = options["context"]; 
+    },
+        
+    registerView: function(view) {
+        this.views[view.getName()] = view;
+    },
+    
+    start: function() {
+        import_js(this.options["layout_url"]);
+        this.layout = new essilab.project.view.Layout();
+        this.execute(this.options["start_url"]);
+    },
+    
+    execute: function(url) {
+        // Check if view is already loaded, if not dynamicaly load it in ajax.
+        if (Object.isUndefined(this.views[url]))
+            import_js(this.options["context"] + "views/" +url+".js");
+        this.layout.contextView.setMembers([this.views[url].getContainer()]);
+    }
+
+});
+

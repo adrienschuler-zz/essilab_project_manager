@@ -1,0 +1,5 @@
+<DataSource ID="UserTask" inheritsFrom="Task" Constructor="UserTask">
+	<fields>
+	</fields>
+</DataSource>
+
